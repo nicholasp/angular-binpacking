@@ -1,0 +1,24 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    {{title}}
+  </h1>
+</div>
+<div class="form-group">
+    <input #myFile type="file" (change)="csv2Array($event)" name="myFile" accept=".csv">
+    <br>
+    Μέγιστο ύψος: <input [(ngModel)]="containerHeight" type="number" value="210"/> cm.
+    <br>
+    <label for="isPallet">Με παλέτες ανά σειρά </label><input id="isPallet" type="checkbox" [(ngModel)]="isPallet"/>
+    <span *ngIf="isPallet"><br>σε κάθε σειρά υπολογίζεται αυτόματα μια παλέτα.</span>
+    <br>
+    <button id="clear" (click)="clearFile()">Καθαρισμός</button>
+    <button (click)="calculate()">Υπολογισμός</button>
+</div>
+<h2>Πληθος Παλετών: {{binsFin.length}}</h2>
+<span *ngFor="let pack of binsFin; let i = index;">
+    <strong>{{i+1}}.</strong> Ύψος Παλ: <span [ngClass]="{'warrning': pack.sum > containerHeight}">{{pack.sum}}</span>, Τύπος: {{pack.type}}:
+    <pre *ngFor="let item of pack.items.reverse()" [ngClass]="{'gray': item.type == 'PAL'}"> Κωδικός: {{item.code}} - {{item.desc}}, Ύψος: {{item.height}}, Τύπος: {{item.type}}</pre>
+  <br>
+</span>
+
