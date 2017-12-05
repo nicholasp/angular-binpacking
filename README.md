@@ -1,2 +1,1 @@
-# angular-binpacking
-Angular 2 Bin Packing
+# Angular 2 Bin Packing Playground
