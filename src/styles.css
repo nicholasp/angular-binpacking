@@ -1,1 +1,103 @@
 /* You can add global styles to this file, and also import other style files */
+.packHeader{
+    text-align:center;
+    height:60px;
+    background-color:#d9e2e6;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:26px;
+    padding-top:25px;
+    margin-bottom:30px;
+    text-align: left;
+    padding-left: 20px;
+}
+.title{
+    position: absolute;
+    padding-left:20px;
+    padding-top:5px;
+}
+.browseCont{
+    /* background-color:#e6e6e6; */
+    width:500px;
+    /* float:left; */
+    height:75px;
+    border-bottom:1px dashed #ccc;
+}
+.calcCont{
+    float:left;
+    width:500px;
+    /* background-color:yellow; */
+    height:125px;
+    margin-top:20px;
+    border-bottom:1px dashed #ccc;
+}
+.clearBtn{
+    width:150px;
+    height:40px;
+    background-color:#6d98ab;
+    border:0;
+    font-size:16px;
+    color:#fff;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top:15px;
+}
+.clearBtnCont{
+    float:left;
+}
+.calcBtn{
+    width:150px;
+    height:40px;
+    background-color:#e7921c;
+    border:0;
+    font-size:16px;
+    color:#fff;
+    margin-top:30px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.calcBtnCont{
+    vertical-align:bottom;
+    float:left;
+}
+.leftCont{
+    height:64px;
+    float:left;
+    width:240px;
+    /* background-color:yellow */
+}
+.selectF{
+    font-size:16px;
+    font-family:Arial, Helvetica, sans-serif;
+    color:#4d7c90;
+}
+.myFile{
+    margin-top:10px;
+    margin-left:10px
+}
+.paddTop{
+    padding-top:7px
+}
+.maxHeight{
+    font-size:16px;
+    font-family:Arial, Helvetica, sans-serif;
+    padding-bottom:30px;
+    color:#df6900
+}
+.PalLine{
+    font-size:16px;
+    font-family:Arial, Helvetica, sans-serif;
+    color:#df6900
+}
+.inputHeight{
+    margin-top:10px;
+    margin-left:10px
+}
+.Customers{
+    text-align:center;
+    height:30px;
+    background-color:#f4ede3;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:20px;
+    padding-top:5px;
+    margin-bottom:30px;
+    text-align: left;
+    padding-left: 20px;
+}
