@@ -1,10 +1,10 @@
 <div  class="packHeader">
-    <img src="/assets/images/Bin_logo.png" />  
+    <img src="/assets/images/Bin_logo.png" />
   <span class="title">  {{title}}</span>
 </div>
 
 <div class="form-group" class="browseCont">
-  <div class="leftCont paddTop"> 
+  <div class="leftCont paddTop">
     <label class="selectF">• Επιλέξτε αρχείο</label>
     <input #myFile type="file" (change)="csv2Array($event)" name="myFile" accept=".csv" class="myFile">
   </div>
@@ -14,7 +14,7 @@
 </div>
 
 <div class="calcCont">
-  <div class="leftCont" style="height:100px;">  
+  <div class="leftCont" style="height:100px;">
     <div class="maxHeight">
       • Μέγιστο ύψος:<br><input [(ngModel)]="containerHeight" type="number" value="210" class="inputHeight" /> cm.
     </div>
@@ -39,16 +39,16 @@
     </div> -->
 
 
-    
+
 <div *ngFor="let pack of binsFin; let i = index;" style="font-family:Arial, Helvetica, sans-serif;margin-left:20px;margin-bottom:20px;border-bottom:0px dashed #ccc;width:100%;overflow:visible">
   <div style="float:left;width:60%;margin-bottom:30px;">
     <div style="height:auto;width:100%;">
       <div style="background-color:#f3f7f8;padding-top:5px;padding-bottom:5px;">
           <strong>{{i+1}}. Ύψος Παλέτας: <span [ngClass]="{'warrning': pack.sum > containerHeight}" >{{pack.sum}}</span>, Τύπος: {{pack.type}}</strong>
       </div>
-        <div style="font-family:Arial, Helvetica, sans-serif;" *ngFor="let item of pack.items.reverse()" 
+        <div style="font-family:Arial, Helvetica, sans-serif;" *ngFor="let item of pack.items.reverse()"
         [ngClass]="{'gray': item.type == 'PAL'}">
-        
+
         <div *ngIf="item.type != 'PAL'" style="border-bottom:1px dashed #ccc;padding-bottom:8px;padding-top:8px">
             <div style="line-height:140%">
                 Κωδικός: {{item.code}}
@@ -63,16 +63,24 @@
             <div style="line-height:140%">
                 Κωδικός: {{item.code}}, {{item.desc}}, Ύψος: {{item.height}}
             </div>
-        
+
           <!-- Τύπος: {{item.type}} -->
         </div>
-    
+
     </div>
-    
+
   </div>
 </div>
-  <div style="height:100px;width:100px;float:left;background-color:yellow">
 
+
+
+<!-- Grafiko -->
+  <div style="height:100px;width:100px;float:left;background-color:yellow">
+    <div *ngFor="let item of pack.items" class="gfxBox"
+    [style.height.%]="(item.height * 100) / containerHeight | number:'1.2-2'"
+    [ngClass]="{'gfxPal': item.type == 'PAL'}">
+
+    </div>
   </div>
 
 </div>
@@ -82,7 +90,7 @@
 
   <!-- <span *ngFor="let pack of binsFin; let i = index;" style="font-family:Arial, Helvetica, sans-serif;">
       <strong>{{i+1}}.</strong> Ύψος Παλέτας: <span [ngClass]="{'warrning': pack.sum > containerHeight}" >{{pack.sum}}</span>, Τύπος: {{pack.type}}:
-      <pre  style="font-family:Arial, Helvetica, sans-serif;" *ngFor="let item of pack.items.reverse()" 
+      <pre  style="font-family:Arial, Helvetica, sans-serif;" *ngFor="let item of pack.items.reverse()"
       [ngClass]="{'gray': item.type == 'PAL'}"> Κωδικός: {{item.code}} - {{item.desc}}, Ύψος: {{item.height}}, Τύπος: {{item.type}}</pre>
     <br>
   </span> -->
