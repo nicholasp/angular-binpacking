@@ -7,7 +7,16 @@
 }
 .gfxBox {
   background-color: aquamarine;
+  /* border: 1px #000 solid;
+  padding: 1px; */
+  -webkit-box-shadow:inset 0px 0px 0px 1px #000;
+  -moz-box-shadow:inset 0px 0px 0px 1px #000;
+  box-shadow:inset 0px 0px 0px 1px #000;
 }
 .gfxPal {
   background-color: darkgoldenrod;
+  background: linear-gradient(45deg, #dca 12%, transparent 0, transparent 88%, #dca 0),
+    linear-gradient(135deg, transparent 37%, #a85 0, #a85 63%, transparent 0),
+    linear-gradient(45deg, transparent 37%, #dca 0, #dca 63%, transparent 0) #753;
+    background-size: 8px 8px;
 }

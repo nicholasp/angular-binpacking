@@ -136,8 +136,6 @@ export class AppComponent {
     return sum;
   }
 
-
-
   csv2Array(fileInput: any) {
     //read file from input
     this.fileReaded = fileInput.target.files[0];
@@ -191,5 +189,20 @@ export class AppComponent {
     this.binsFin = [];
     this.dataLines = [];
 
+  }
+
+  getGfxHeight(item, totalPaletHeight) {
+
+    if (totalPaletHeight > this.containerHeight  && item.type !== 'PAL') {
+      return (100 - (this.aPallet.height * 100) / this.containerHeight);
+    }
+    return (item.height * 100) / (this.containerHeight);
+  }
+
+  isMaxReached(totalPaletHeight) {
+    if (totalPaletHeight > this.containerHeight) {
+      return true;
+    }
+    return false;
   }
 }
