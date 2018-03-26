@@ -31,27 +31,29 @@
     border-bottom:1px dashed #ccc;
 }
 .clearBtn{
-    width:150px;
-    height:40px;
-    background-color:#6d98ab;
-    border:0;
-    font-size:16px;
-    color:#fff;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-top:15px;
+    width:150px!important;
+    height:40px!important;
+    background-color:#6d98ab!important;
+    border:0!important;
+    font-size:16px!important;
+    color:#fff!important;
+    font-family: Arial, Helvetica, sans-serif!important;
+    margin-top:15px!important;
+    cursor: pointer;
 }
 .clearBtnCont{
     float:left;
 }
 .calcBtn{
-    width:150px;
-    height:40px;
-    background-color:#e7921c;
-    border:0;
-    font-size:16px;
-    color:#fff;
-    margin-top:30px;
-    font-family: Arial, Helvetica, sans-serif;
+    width:150px!important;
+    height:40px!important;
+    background-color:#e7921c!important;
+    border:0!important;
+    font-size:16px!important;
+    color:#fff!important;
+    margin-top:30px!important;
+    font-family: Arial, Helvetica, sans-serif!important;
+    cursor: pointer;
 }
 .calcBtnCont{
     vertical-align:bottom;

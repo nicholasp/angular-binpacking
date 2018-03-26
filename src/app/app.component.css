@@ -5,6 +5,15 @@
 .gray {
   color: gray;
 }
+.gfxContainerSpace {
+  height:150px;
+  width:100px;
+  display: table-cell;
+  vertical-align: bottom;
+  position: relative;
+  background-color: gray;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(255,255,255,.3) 5px, rgba(255,255,255,.3) 10px);
+}
 .gfxBox {
   background-color: aquamarine;
   /* border: 1px #000 solid;
@@ -13,10 +22,20 @@
   -moz-box-shadow:inset 0px 0px 0px 1px #000;
   box-shadow:inset 0px 0px 0px 1px #000;
 }
+
 .gfxPal {
   background-color: darkgoldenrod;
   background: linear-gradient(45deg, #dca 12%, transparent 0, transparent 88%, #dca 0),
     linear-gradient(135deg, transparent 37%, #a85 0, #a85 63%, transparent 0),
     linear-gradient(45deg, transparent 37%, #dca 0, #dca 63%, transparent 0) #753;
-    background-size: 8px 8px;
+    background-size: 4px 4px;
+}
+
+.gfxMax {
+  top: 0px;
+  width: 100%;
+  height: 6px;
+  background-color: red;
+  position: absolute;
+  background-image: repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(255,255,255,.6) 5px, rgba(255,255,255,.6) 10px);
 }

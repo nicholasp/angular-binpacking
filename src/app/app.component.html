@@ -1,15 +1,15 @@
 <div  class="packHeader">
-    <img src="/assets/images/Bin_logo.png" />
+    <img src="./assets/images/Bin_logo.png" />
   <span class="title">  {{title}}</span>
 </div>
 
 <div class="form-group" class="browseCont">
   <div class="leftCont paddTop">
     <label class="selectF">• Επιλέξτε αρχείο</label>
-    <input #myFile type="file" (change)="csv2Array($event)" name="myFile" accept=".csv" class="myFile">
+    <input #myFile type="file" (change)="csv2Array($event)" name="myFile" accept=".csv" class="myFile" style="width: 200px;">
   </div>
   <div class="clearBtnCont">
-    <button id="clear" (click)="clearFile()" class="clearBtn">ΚΑΘΑΡΙΣΜΟΣ</button>
+    <input type="button" value="ΚΑΘΑΡΙΣΜΟΣ" id="clear" (click)="clearFile()" class="clearBtn" />
   </div>
 </div>
 
@@ -19,12 +19,12 @@
       • Μέγιστο ύψος:<br><input [(ngModel)]="containerHeight" type="number" value="210" class="inputHeight" /> cm.
     </div>
 
-    <label class="PalLine" for="isPallet">• Με παλέτες ανά σειρά </label><input id="isPallet" type="checkbox" [(ngModel)]="isPallet"/>
+    <label class="PalLine" for="isPallet">• Με παλέτες ανά σειρά </label><input id="isPallet" type="checkbox" [(ngModel)]="isPallet" />
     <span *ngIf="isPallet"><br>σε κάθε σειρά υπολογίζεται αυτόματα μια παλέτα.</span>
   </div>
 
     <div class="calcBtnCont" >
-      <button (click)="calculate()" class="calcBtn">ΥΠΟΛΟΓΙΣΜΟΣ</button>
+        <input type="button" value="ΥΠΟΛΟΓΙΣΜΟΣ" (click)="calculate()" class="calcBtn" />
     </div>
 </div>
 <br><br>
@@ -46,27 +46,24 @@
       <div style="background-color:#f3f7f8;padding-top:5px;padding-bottom:5px;">
           <strong>{{i+1}}. Ύψος Παλέτας: <span [ngClass]="{'warrning': pack.sum > containerHeight}" >{{pack.sum}}</span>, Τύπος: {{pack.type}}</strong>
       </div>
-        <div style="font-family:Arial, Helvetica, sans-serif;" *ngFor="let item of pack.items.reverse()"
+      <div style="font-family:Arial, Helvetica, sans-serif;" *ngFor="let item of pack.items"
         [ngClass]="{'gray': item.type == 'PAL'}">
 
         <div *ngIf="item.type != 'PAL'" style="border-bottom:1px dashed #ccc;padding-bottom:8px;padding-top:8px">
-            <div style="line-height:140%">
-                Κωδικός: {{item.code}}
-            </div>
-            <div style="line-height:140%">
-                {{item.desc}}
-            </div>
-              Ύψος: {{item.height}}
+          <div style="line-height:140%">
+            Κωδικός: {{item.code}}
+          </div>
+          <div style="line-height:140%">
+            {{item.desc}}
+          </div>
+            Ύψος: {{item.height}}
         </div>
-
         <div *ngIf="item.type == 'PAL'" style="padding-top:8px;border-bottom:1px dashed #ccc;padding-bottom:8px;">
-            <div style="line-height:140%">
-                Κωδικός: {{item.code}}, {{item.desc}}, Ύψος: {{item.height}}
-            </div>
-
+          <div style="line-height:140%">
+              Κωδικός: {{item.code}}, {{item.desc}}, Ύψος: {{item.height}}
+          </div>
           <!-- Τύπος: {{item.type}} -->
         </div>
-
     </div>
 
   </div>
@@ -76,17 +73,13 @@
 
 <!-- Grafiko -->
 <!-- [style.height.%]="((item.height * 100) / containerHeight) | number:'1.2-2'" -->
-  <div style="height:150px;width:100px;display: table-cell;vertical-align: bottom; position: relative;
-  background-color: gray; background-image: repeating-linear-gradient(45deg, transparent, transparent 5px, rgba(255,255,255,.3) 5px, rgba(255,255,255,.3) 10px);">
-    <div style="top: 0px; width: 100%; height: 6px; background-color: red; position: absolute;
-    background-image: repeating-linear-gradient(90deg, transparent, transparent 5px, rgba(255,255,255,.6) 5px, rgba(255,255,255,.6) 10px);" *ngIf="isMaxReached(pack.sum)"></div>
+  <div class="gfxContainerSpace">
+    <div class="gfxMax" *ngIf="isMaxReached(pack.sum)"></div>
 
     <div *ngFor="let item of pack.items" class="gfxBox"
           [style.height.%]="getGfxHeight(item, pack.sum)"
           [ngClass]="{'gfxPal': item.type == 'PAL'}">
-
     </div>
-
   </div>
   <div style="clear:both"></div>
 </div>

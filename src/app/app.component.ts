@@ -42,7 +42,7 @@ export class AppComponent {
   //@ViewChild('containerHeight') containerHeightElement: ElementRef;
 
   containerHeight: number;
-  isPallet: boolean;
+  isPallet = false;
   aPallet = {
     "code": "PAL",
     "desc": "Παλέτα",
@@ -120,6 +120,10 @@ export class AppComponent {
       }
     });
 
+    bins.forEach(bin => {
+      bin.items = bin.items.reverse();
+    });
+
     return bins;
   }
 
@@ -173,7 +177,7 @@ export class AppComponent {
         }
       }
       // all rows in the csv file
-      console.log('CSV>>>>>>>>>>>>>>>>>', lines);
+      //console.log('CSV>>>>>>>>>>>>>>>>>', lines);
       this.dataLines = lines;
       this.calculate();
     };
