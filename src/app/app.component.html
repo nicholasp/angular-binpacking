@@ -14,13 +14,16 @@
 </div>
 
 <div class="calcCont">
-  <div class="leftCont" style="height:100px;">
+  <div class="leftCont">
     <div class="maxHeight">
       • Μέγιστο ύψος:<br><input [(ngModel)]="containerHeight" type="number" value="210" class="inputHeight" /> cm.
     </div>
 
     <label class="PalLine" for="isPallet">• Με παλέτες ανά σειρά </label><input id="isPallet" type="checkbox" [(ngModel)]="isPallet" />
     <span *ngIf="isPallet"><br>σε κάθε σειρά υπολογίζεται αυτόματα μια παλέτα.</span>
+    <div *ngIf="isPallet">
+      <label class="PalLine" for="MaxPals">• Μεγ. Αρ. Παλετών</label><input id="MaxPals" type="number" [(ngModel)]="MaxPals" />
+    </div>
   </div>
 
     <div class="calcBtnCont" >

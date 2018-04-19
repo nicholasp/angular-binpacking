@@ -3,17 +3,22 @@ import { Component, ViewChild, ElementRef } from "@angular/core";
 export class Bin {
   items: string[];
   sum: number;
+  countPals: number;
   type: string;
 
   // This allows you to make the call `new Hero(1, 'Flash')` for example
   constructor() {
     this.items = [];
     this.sum = 0;
+    this.countPals = 0;
   }
 
   append(item) {
     this.items.push(item);
     this.sum += item.height;
+    if (item.type ===  'PAL') {
+      this.countPals += 1;
+    }
   }
   setType (item) {
     this.type = item.type;
@@ -43,6 +48,7 @@ export class AppComponent {
 
   containerHeight: number;
   isPallet = false;
+  MaxPals = 2;
   aPallet = {
     "code": "PAL",
     "desc": "Παλέτα",
@@ -97,10 +103,21 @@ export class AppComponent {
 
       for (i = 0; i < len; i++) {
         isMatched = false;
+        //////////
+        // Mono an isxisei to kanonas me tis 2 paletes (var: MaxPals)
+        if (this.isPallet) {
+          palletSize = this.aPallet.height;
+          if (this.isPallet && bins[i].countPals >= this.MaxPals) {
+            palletSize = 0;
+          }
+        }
+        ///////////
         if (bins[i].sum + item.height + palletSize <= maxValue) {
           if (bins[i].type === item.type) {
             if (this.isPallet) {
-              bins[i].append(this.aPallet);
+              if (bins[i].countPals < this.MaxPals) {
+                bins[i].append(this.aPallet);
+              }
               bins[i].append(item);
             } else {
               bins[i].append(item);
