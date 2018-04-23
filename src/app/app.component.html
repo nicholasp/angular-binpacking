@@ -2,78 +2,66 @@
     <img src="./assets/images/Bin_logo.png" />
   <span class="title">  {{title}}</span>
 </div>
-
 <div class="form-group" class="browseCont">
   <div class="leftCont paddTop">
     <label class="selectF">• Επιλέξτε αρχείο</label>
-    <input #myFile type="file" (change)="csv2Array($event)" name="myFile" accept=".csv" class="myFile" style="width: 200px;">
+    <input #myFile type="file" (change)="csv2Array($event)" name="myFile" accept=".csv" class="myFile">
   </div>
   <div class="clearBtnCont">
     <input type="button" value="ΚΑΘΑΡΙΣΜΟΣ" id="clear" (click)="clearFile()" class="clearBtn" />
   </div>
 </div>
-
 <div class="calcCont">
   <div class="leftCont">
     <div class="maxHeight">
       • Μέγιστο ύψος:<br><input [(ngModel)]="containerHeight" type="number" value="210" class="inputHeight" /> cm.
+      <div style="margin-top:20px">
+        <label class="PalLine" for="isPallet">Με παλέτες ανά σειρά </label><input id="isPallet" type="checkbox" [(ngModel)]="isPallet" />
+        <span class="txtSmall" *ngIf="isPallet">σε κάθε σειρά υπολογίζεται αυτόματα μια παλέτα.</span>
+      </div>
     </div>
-
-    <label class="PalLine" for="isPallet">• Με παλέτες ανά σειρά </label><input id="isPallet" type="checkbox" [(ngModel)]="isPallet" />
-    <span *ngIf="isPallet"><br>σε κάθε σειρά υπολογίζεται αυτόματα μια παλέτα.</span>
-    <div *ngIf="isPallet">
-      <label class="PalLine" for="MaxPals">• Μεγ. Αρ. Παλετών</label><input id="MaxPals" type="number" [(ngModel)]="MaxPals" />
+    <div *ngIf="isPallet" style="margin-top:15px">
+      <label class="PalLine" for="MaxPals">Μέγιστος αριθμός Παλετών</label>
+      <input class="MaxPals" id="MaxPals" type="number" [(ngModel)]="MaxPals" />
     </div>
   </div>
-
-    <div class="calcBtnCont" >
+    <div class="calcBtnCont">
         <input type="button" value="ΥΠΟΛΟΓΙΣΜΟΣ" (click)="calculate()" class="calcBtn" />
     </div>
 </div>
-<br><br>
-
-<div style="clear:left;margin-top:140px;">
+<div class="clearL">
   <div  class="Customers">
     Πλήθος Παλετών: {{binsFin.length}}
   </div>
-
     <!-- <div *ngFor="let pack of binsFin; let i = index;" style="font-family:Arial, Helvetica, sans-serif;">
-
     </div> -->
-
-
-
-<div *ngFor="let pack of binsFin; let i = index;" style="font-family:Arial, Helvetica, sans-serif;margin-left:20px;margin-bottom:20px;border-bottom:0px dashed #ccc;width:100%;overflow:visible">
-  <div style="float:left;width:60%;margin-bottom:30px;">
-    <div style="height:auto;width:100%;">
-      <div style="background-color:#f3f7f8;padding-top:5px;padding-bottom:5px;">
+<div *ngFor="let pack of binsFin; let i = index;" class="content">
+  <div class="paleta">
+    <div class="paletaInside">
+      <div class="paletaHeight">
           <strong>{{i+1}}. Ύψος Παλέτας: <span [ngClass]="{'warrning': pack.sum > containerHeight}" >{{pack.sum}}</span>, Τύπος: {{pack.type}}</strong>
       </div>
-      <div style="font-family:Arial, Helvetica, sans-serif;" *ngFor="let item of pack.items"
+      <div class="txtFont" *ngFor="let item of pack.items"
         [ngClass]="{'gray': item.type == 'PAL'}">
 
-        <div *ngIf="item.type != 'PAL'" style="border-bottom:1px dashed #ccc;padding-bottom:8px;padding-top:8px">
-          <div style="line-height:140%">
+        <div *ngIf="item.type != 'PAL'" class="borderBottom">
+          <div class="lineHeight">
             Κωδικός: {{item.code}}
           </div>
-          <div style="line-height:140%">
+          <div class="lineHeight">
             {{item.desc}}
           </div>
             Ύψος: {{item.height}}
         </div>
-        <div *ngIf="item.type == 'PAL'" style="padding-top:8px;border-bottom:1px dashed #ccc;padding-bottom:8px;">
-          <div style="line-height:140%">
+        <div *ngIf="item.type == 'PAL'" class="borderTop">
+          <div class="lineHeight">
               Κωδικός: {{item.code}}, {{item.desc}}, Ύψος: {{item.height}}
           </div>
           <!-- Τύπος: {{item.type}} -->
         </div>
     </div>
-
   </div>
 </div>
-
-
-
 <!-- Grafiko -->
 <!-- [style.height.%]="((item.height * 100) / containerHeight) | number:'1.2-2'" -->
   <div class="gfxContainerSpace">
@@ -84,17 +72,12 @@
           [ngClass]="{'gfxPal': item.type == 'PAL'}">
     </div>
   </div>
-  <div style="clear:both"></div>
+  <div class="clearB"></div>
 </div>
-
-
-
-
   <!-- <span *ngFor="let pack of binsFin; let i = index;" style="font-family:Arial, Helvetica, sans-serif;">
       <strong>{{i+1}}.</strong> Ύψος Παλέτας: <span [ngClass]="{'warrning': pack.sum > containerHeight}" >{{pack.sum}}</span>, Τύπος: {{pack.type}}:
       <pre  style="font-family:Arial, Helvetica, sans-serif;" *ngFor="let item of pack.items.reverse()"
       [ngClass]="{'gray': item.type == 'PAL'}"> Κωδικός: {{item.code}} - {{item.desc}}, Ύψος: {{item.height}}, Τύπος: {{item.type}}</pre>
     <br>
   </span> -->
-
 </div>
